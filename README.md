@@ -1038,59 +1038,29 @@ Most of the hard problems were not in the code but in the **network and configur
 <br/>
 
 <a id="team"></a>
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Team%20%26%20Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Team & Acknowledgements"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=The+team+behind+the+TelcoPulse+distributed+platform" alt="Section subtitle"/>
-</div>
-
-<br/>
-
 <div align="center">
-
-### The People Behind TelcoPulse
-
-A collaborative team bringing together data engineering, distributed systems, and telecom analytics to build an end-to-end platform across six physical laptops.
-
-| Role | Team Member |
-|:---|:---:|
-| **Team Leader** | **Mahmoud Saleh** |
-| Team Member | Ali Tharwat |
-| Team Member | Youssef ElToor |
-| Team Member | Basel Tarek |
-
-*Built through teamwork, shared problem-solving, and hands-on implementation.*
-
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Team%20%26%20Acknowledgements&fontSize=30&color=0B1F3A&height=90&fontColor=ffffff&animation=fadeIn&fontAlignY=52" width="100%" alt="Team and Acknowledgements"/>
+<p><em>The people behind the TelcoPulse distributed telecom analytics platform</em></p>
 </div>
 
-<br/>
+### 👥 Project Team
 
-<a id="supervisor"></a>
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Project%20Supervisor&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Project Supervisor"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=With+appreciation+for+project+guidance+and+support" alt="Section subtitle"/>
-<sub><b>PROJECT SUPERVISOR</b></sub>
+| Role | Team Member | LinkedIn |
+|:---|:---|:---:|
+| **Team Leader** | **Mahmoud Saleh** | [Profile](https://www.linkedin.com/in/mahmoud-m-saleh/) |
+| Team Member | Ali Tharwat | [Profile](https://www.linkedin.com/in/ali-tharwat-902817321/) |
+| Team Member | Youssef ElToor | [Profile](https://www.linkedin.com/in/youssefeltoor/) |
+| Team Member | Basel Tarek | [Profile](https://www.linkedin.com/in/basel-tarek-044307321/) |
 
-<br/><br/>
+### 🎓 Project Supervisor
 
-Thank you, Eng. Ahmed Hassan, for your guidance, feedback, and continued support throughout the project. Your direction helped us turn our ideas into a working distributed data platform.
-</div>
+Thank you to [**Eng. Ahmed Hassan**](https://www.linkedin.com/in/ahmed-hassan-3ab26219b/) for his guidance, feedback, and continued support throughout the project. His direction helped us turn our ideas into a working distributed data platform.
 
-<br/>
+### 🙏 Special Thanks
 
-<a id="acknowledgements"></a>
-<div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Acknowledgements"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=With+gratitude+to+everyone+who+supported+TelcoPulse" alt="Section subtitle"/>
-<sub><b>SPECIAL THANKS</b></sub>
+A heartfelt thank-you to [**Eng. Mohammed Salah**](https://www.linkedin.com/in/mohammed-01-salah/) for sharing his time, practical technical advice, and encouragement during the development of TelcoPulse. His support was valuable as we worked through the challenges of building and connecting the platform.
 
-<br/><br/>
-
-A heartfelt thank-you to **Eng. Mohammed Salah** ([GitHub](https://github.com/MohammedAhmed-01)) for sharing his time, practical technical advice, and encouragement during the development of TelcoPulse. His support was valuable as we worked through the challenges of building and connecting the platform.
-
-<br/><br/>
-
-<sub>We are also grateful to the **National Telecommunication Institute (NTI)** and the **Huawei HCIA Big Data** programme for the learning opportunity, and to the open-source communities behind Apache Spark, Apache Kafka, ClickHouse, Apache Superset, Docker, and RustFS for the tools that made this project possible.</sub>
-
-</div>
+We are also grateful to the **National Telecommunication Institute (NTI)** and the **Huawei HCIA Big Data** programme for the learning opportunity, and to the open-source communities behind Apache Spark, Apache Kafka, ClickHouse, Apache Superset, Docker, and RustFS for the tools that made this project possible.
 
 <br/>
 
