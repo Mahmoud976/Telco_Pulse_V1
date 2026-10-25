@@ -1040,7 +1040,7 @@ Most of the hard problems were not in the code but in the **network and configur
 
 <a id="team"></a>
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&amp;section=header&amp;text=Team%20%26%20Acknowledgements&amp;fontSize=34&amp;color=gradient&amp;customColorList=12%2C20%2C24&amp;height=90&amp;fontColor=ffffff&amp;animation=scaleIn&amp;fontAlignY=52" width="100%" alt="Team and Acknowledgements"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&amp;section=header&amp;text=Team%20and%20Acknowledgements&amp;fontSize=34&amp;color=gradient&amp;customColorList=12%2C20%2C24&amp;height=90&amp;fontColor=ffffff&amp;animation=scaleIn&amp;fontAlignY=52" width="100%" alt="Team and Acknowledgements"/>
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;size=16&amp;pause=900&amp;color=00D4FF&amp;center=true&amp;vCenter=true&amp;width=860&amp;height=28&amp;lines=The+people+behind+the+TelcoPulse+distributed+platform" alt="Team section animated subtitle"/>
 </div>
 
