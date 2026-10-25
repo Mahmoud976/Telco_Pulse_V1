@@ -1068,8 +1068,10 @@ A collaborative team bringing together data engineering, distributed systems, an
 
 <a id="supervisor"></a>
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Supervisor&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Supervisor"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1200&color=0891B2&center=true&vCenter=true&width=620&height=50&lines=Eng.+Ahmed+Hassan" alt="Eng. Ahmed Hassan"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Acknowledgements"/>
+<a href="https://github.com/MohammedAhmed-01">
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1200&color=0891B2&center=true&vCenter=true&width=660&height=50&lines=Eng.+Mohammed+Salah" alt="Eng. Mohammed Salah"/>
+</a>
 <sub><b>PROJECT SUPERVISOR</b></sub>
 
 <br/><br/>
