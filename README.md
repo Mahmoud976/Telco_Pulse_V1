@@ -946,7 +946,7 @@ cat Clickhouse/01_init_schema.sql | docker exec -i clickhouse-node5 \
   clickhouse-client --user "$CH_USER" --password "$CH_PASSWORD" --multiquery
 ```
 
-The current Compose file still defines lab ClickHouse credentials; use those only on the isolated lab and replace them before any reuse.
+The Compose file still uses lab ClickHouse credentials. Keep them confined to the isolated lab and replace them before reuse.
 
 Watch it live: **Kafka UI** `http://192.168.1.13:8080` · **Spark UI** `http://192.168.1.11:8080` · **Superset** `http://192.168.1.15:8088`
 
@@ -1057,7 +1057,7 @@ Most of the hard problems were not in the code but in the **network and configur
 | 1 | Re-run the failed `Dataset_03_NR_3500` file to complete all ten curated datasets |
 | 2 | Batch the ClickHouse inserts from the stream processor |
 | 3 | Replace the demo benchmark data with real runs from `benchmark_runs` |
-| 4 | Move all credentials to environment variables and commit a sanitised `env.ps1` |
+| 4 | Remove remaining lab credentials from `stream_processor.py` and config files; keep secrets in environment variables |
 
 > [!IMPORTANT]
 > TelcoPulse remains an **educational lab**, not a production telecom deployment. High availability and production hardening are outside the stated scope.
