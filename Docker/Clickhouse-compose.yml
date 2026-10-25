@@ -42,7 +42,7 @@ services:
     ports:
       - "8088:8088"
     environment:
-      - SUPERSET_SECRET_KEY=telcopulse_secure_secret_key_2026
+      - SUPERSET_SECRET_KEY=${SUPERSET_SECRET_KEY:?Set SUPERSET_SECRET_KEY before starting Superset}
     volumes:
       - ./superset_home:/app/superset_home
     depends_on:
