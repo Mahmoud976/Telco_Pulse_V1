@@ -1043,6 +1043,7 @@ Most of the hard problems were not in the code but in the **network and configur
 <br/>
 
 <a id="team"></a>
+<div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Team%20%26%20Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Team & Acknowledgements"/>
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=The+team+behind+the+TelcoPulse+distributed+platform" alt="Section subtitle"/>
 </div>
