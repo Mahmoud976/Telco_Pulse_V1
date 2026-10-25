@@ -594,12 +594,10 @@ Score-based severity: `≥ 1.5 → critical` · `≥ 1.0 → warning` · otherwi
 <br/>
 
 <a id="machine-learning"></a>
-
-## Machine Learning &amp; Intelligence
-
-<p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira%20Code&amp;size=16&amp;pause=900&amp;color=00D4FF&amp;center=true&amp;vCenter=true&amp;width=860&amp;height=32&amp;lines=Four%20telecom%20ML%20use%20cases%20plus%20a%20platform%20advisor" alt="Four telecom ML use cases plus a platform advisor"/>
-</p>
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&amp;section=header&amp;text=Machine%20Learning%20%26%20Intelligence&amp;fontSize=34&amp;color=gradient&amp;customColorList=12%2C20%2C24&amp;height=70&amp;fontColor=ffffff&amp;animation=scaleIn&amp;fontAlignY=52" width="100%" alt="Machine Learning and Intelligence"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;size=16&amp;pause=900&amp;color=00D4FF&amp;center=true&amp;vCenter=true&amp;width=860&amp;height=28&amp;lines=Four+telecom+ML+use+cases+plus+a+platform+advisor" alt="Section subtitle"/>
+</div>
 
 Machine learning in TelcoPulse is not just a roadmap item. The repository contains a runnable **telecom ML MVP** with four use cases, generated result files and a summary visualization, plus a **separate platform-performance advisor** that analyses the big-data system itself.
 
