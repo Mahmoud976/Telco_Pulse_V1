@@ -624,7 +624,7 @@ Machine learning in TelcoPulse is not just a roadmap item. The repository contai
 The demo used **45 synthetic cells**, with **85,320 training rows** and **15,120 test rows** across a 14-day test period. Because the data intentionally contains designed patterns and injected energy-waste examples, these metrics should not be interpreted as expected performance on operational network data.
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Four%20Telecom%20ML%20Use%20Cases&fontSize=30&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Four Telecom ML Use Cases"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Four%20Telecom%20ML%20Use%20Cases&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Four Telecom ML Use Cases"/>
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Four+telecom+ML+use+cases+plus+a+platform+advisor" alt="Section subtitle"/>
 </div>
 
@@ -678,7 +678,7 @@ flowchart LR
 The Spark entry point `TelcoPulse_ML_MVP/spark/spark_ml_job.py` reads the curated LTE, NR and GSM Parquet paths from RustFS, performs distributed hourly aggregation and cell-history filtering with Spark, then collects the compact hourly series to the driver for the scikit-learn modelling stage. With `--write-clickhouse`, the workflow can write results to the ML tables defined in `TelcoPulse_ML_MVP/sql/05_ml_tables.sql`.
 
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Platform%20Performance%20Advisor&fontSize=30&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Platform Performance Advisor"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Platform%20Performance%20Advisor&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Platform Performance Advisor"/>
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Four+telecom+ML+use+cases+plus+a+platform+advisor" alt="Section subtitle"/>
 </div>
 
@@ -1038,10 +1038,8 @@ Most of the hard problems were not in the code but in the **network and configur
 <br/>
 
 <a id="team"></a>
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Acknowledgements"/>
-<a href="https://github.com/MohammedAhmed-01">
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Team%20%26%20Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Team & Acknowledgements"/>
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=The+team+behind+the+TelcoPulse+distributed+platform" alt="Section subtitle"/>
-</a>
 </div>
 
 <br/>
@@ -1067,10 +1065,8 @@ A collaborative team bringing together data engineering, distributed systems, an
 
 <a id="supervisor"></a>
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Acknowledgements"/>
-<a href="https://github.com/MohammedAhmed-01">
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Project%20Supervisor&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Project Supervisor"/>
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=With+appreciation+for+project+guidance+and+support" alt="Section subtitle"/>
-</a>
 <sub><b>PROJECT SUPERVISOR</b></sub>
 
 <br/><br/>
@@ -1083,14 +1079,12 @@ Thank you, Eng. Ahmed Hassan, for your guidance, feedback, and continued support
 <a id="acknowledgements"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Acknowledgements"/>
-<a href="https://github.com/MohammedAhmed-01">
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=With+gratitude+to+everyone+who+supported+TelcoPulse" alt="Section subtitle"/>
-</a>
 <sub><b>SPECIAL THANKS</b></sub>
 
 <br/><br/>
 
-A heartfelt thank-you to **Eng. Mohammed Salah** for sharing his time, practical technical advice, and encouragement during the development of TelcoPulse. His support was valuable as we worked through the challenges of building and connecting the platform.
+A heartfelt thank-you to **Eng. Mohammed Salah** ([GitHub](https://github.com/MohammedAhmed-01)) for sharing his time, practical technical advice, and encouragement during the development of TelcoPulse. His support was valuable as we worked through the challenges of building and connecting the platform.
 
 <br/><br/>
 
