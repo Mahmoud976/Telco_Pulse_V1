@@ -13,7 +13,7 @@ services:
       - --webui-port
       - "8080"
     volumes:
-      - G:/TelcoPulse/config/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
+      - ../config/spark-defaults.conf:/opt/spark/conf/spark-defaults.conf:ro
     ports:
       - "7077:7077"
       - "8080:8080"
