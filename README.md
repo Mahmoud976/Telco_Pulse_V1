@@ -110,8 +110,8 @@ timeline
 
 <a id="results"></a>
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Results%20at%20a%20Glance&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Results at a Glance"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=31.9M+curated+rows+across+LTE%2C+NR+and+GSM" alt="Section subtitle"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Project%20Overview&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Project Overview"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=A+distributed+telecom+big+data+analytics+platform" alt="Section subtitle"/>
 </div>
 
 ```mermaid
