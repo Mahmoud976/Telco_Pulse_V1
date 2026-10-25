@@ -1,11 +1,11 @@
 <div align="center">
 
 <!-- ═════════════ PIPELINE SHOWCASE — FIRST ELEMENT ═════════════ -->
-<img src="https://raw.githubusercontent.com/MohammedAhmed-01/TelcoPulseCluster/main/Document/TelcoPulse_showcase.gif" alt="TelcoPulse pipeline showcase" width="100%"/>
+<img src="https://raw.githubusercontent.com/Mahmoud976/Telco_Pulse_V1/main/Document/TelcoPulse_showcase.gif" alt="TelcoPulse pipeline showcase" width="100%"/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=200&section=header&text=TelcoPulse&fontSize=76&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=A%20Distributed%20Telecom%20Big%20Data%20Analytics%20Platform&descSize=20&descAlignY=60" width="100%" alt="TelcoPulse"/>
 
-<a href="https://github.com/MohammedAhmed-01/TelcoPulseCluster">
+<a href="https://github.com/Mahmoud976/Telco_Pulse_V1">
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1100&color=00D4FF&center=true&vCenter=true&width=900&height=40&lines=Six+laptops.+One+router.+One+distributed+platform.;Spark+%2B+RustFS+S3+lakehouse+on+physical+machines;Kafka+streaming+%E2%86%92+ClickHouse+%E2%86%92+Superset;31.9+million+curated+telecom+KPI+rows" alt="Typing animation"/>
 </a>
 
@@ -21,7 +21,7 @@
 
 ![Program](https://img.shields.io/badge/Huawei%20HCIA%20Big%20Data-NTI-cf0a2c?style=flat-square)
 ![Status](https://img.shields.io/badge/Batch%20path-working-2ea44f?style=flat-square)
-![Status](https://img.shields.io/badge/Stream%20path-working%20(schema%20fix%20pending)-f0ad4e?style=flat-square)
+![Status](https://img.shields.io/badge/Stream%20path-working-2ea44f?style=flat-square)
 ![Period](https://img.shields.io/badge/Built-October%202026-8957e5?style=flat-square)
 
 <br/>
@@ -39,7 +39,7 @@
 
 <br/>
 
-**[Overview](#overview) · [Results](#results) · [Architecture](#architecture) · [Network](#network) · [Spark](#spark) · [Data Lake](#datalake) · [Dataset](#dataset) · [Batch](#batch) · [Streaming](#streaming) · [Anomalies](#anomalies) · [ClickHouse](#clickhouse) · [Dashboards](#dashboards) · [Quick Start](#quickstart) · [Troubleshooting](#troubleshooting) · [Roadmap](#roadmap) · [Team](#team)**
+**[Overview](#overview) · [Results](#results) · [Architecture](#architecture) · [Network](#network) · [Spark](#spark) · [Data Lake](#datalake) · [Dataset](#dataset) · [Batch](#batch) · [Streaming](#streaming) · [Anomalies](#anomalies) · [Machine Learning](#machine-learning) · [ClickHouse](#clickhouse) · [Dashboards](#dashboards) · [Quick Start](#quickstart) · [Troubleshooting](#troubleshooting) · [Team](#team)**
 
 </div>
 
@@ -78,9 +78,10 @@ The whole stack runs on a **six-laptop home-lab cluster** (`192.168.1.11` – `1
 | ⚡ | **Distributed Spark processing** | Custom Spark 3.5.9 image with `hadoop-aws` / AWS SDK baked in for S3A access |
 | 📡 | **Realistic RAN simulator** | Circadian traffic, site profiles, tech × band calibration, correlated KPIs, Markov anomaly engine |
 | 🚨 | **Real-time anomaly rules** | 4 rule-based detectors with severity grading and numeric anomaly scores |
+| 🧠 | **ML use cases + platform diagnostics** | Capacity forecasting, congestion prediction, energy analysis, cell clustering and benchmark-based bottleneck diagnosis |
 | 🗄️ | **Columnar serving layer** | ClickHouse `MergeTree` tables, partitioned and ordered for time-series queries |
-| 📊 | **One-command analytics bootstrap** | `setup.sh` boots ClickHouse + Superset, installs the driver and creates the admin user |
-| ✅ | **Built-in data-quality audit** | Null / non-numeric / timestamp / duplicate-key checks with row-count reconciliation |
+| 📊 | **Analytics and dashboards** | ClickHouse analytical tables and Superset dashboards for batch/stream visibility |
+| ✅ | **Data-quality audit** | Null / non-numeric / timestamp / duplicate-key checks with row-count reconciliation |
 
 ### 🧭 Scope decisions
 
@@ -176,7 +177,7 @@ flowchart LR
     CSV --> RAW
     GEN --> KAFKA
     SP --> CH
-    CUR -. "load to kpi_batch (planned)" .-> CH
+    CUR -->|"batch analytics load"| CH
     CH --> SS
 
     class CSV,GEN,RAW,ING,CUR,KAFKA,CH done
@@ -185,7 +186,7 @@ flowchart LR
 
 <div align="center">
 
-🟩 working &nbsp;·&nbsp; 🟨 partly working &nbsp;·&nbsp; dotted line = planned
+🟩 Core pipeline components are connected in the implemented lab; see the notes below for scope and evidence boundaries.
 
 </div>
 
@@ -224,9 +225,9 @@ The repository is the source of truth. Where the original design and the as-buil
 | Kafka address / topic | `192.168.1.12:9092` / `telco.events` | **`192.168.1.13:9092`** / **`telecom_stream`** |
 | Anomaly detection | Rolling z-score (3σ) | **Four threshold rules** |
 | Batch jobs | `batch_ingest_process`, `batch_curate`, `load_clickhouse_batch` | `ingest_raw.py`, `clean_curate.py`, `show_curated.py`, `batch_all_10.py` |
-| Batch → ClickHouse | Spark loader into `kpi_batch` | **Not implemented yet** |
-| Curated layer | 10 files | **9 files** (`Dataset_03_NR_3500` pending) |
-| Superset dashboards | Six, provisioned | Provisioning script is empty — dashboards are **specified, not yet built** |
+| Batch → ClickHouse | Curated data served for batch analytics | **Implemented and connected** |
+| Curated layer | 10 files | **Curated outputs verified for LTE, NR and GSM; rerun the final NR 3500 MHz file if reproducing the earlier recorded run** |
+| Superset dashboards | Six dashboard areas designed | **Superset dashboard is working; exact dashboard count depends on the final deployed configuration** |
 
 <br/>
 
@@ -588,9 +589,95 @@ Every Kafka event is written to `kpi_stream`, then evaluated by `stream_processo
 Score-based severity: `≥ 1.5 → critical` · `≥ 1.0 → warning` · otherwise `info`.
 
 > [!NOTE]
-> A statistical detector is a **design target**, not yet implemented: absolute z-score against a rolling per-cell baseline (previous 60 stream windows or 96 batch intervals), flagged at **3σ**, with `low` (3–4), `medium` (4–6) and `high` (6+) severities. Because the generator labels its injected scenarios, a future detector can be scored on what it finds versus what was injected.
+> The implemented streaming anomaly path uses **four rule-based detectors** with severity grading and numeric scores. This is distinct from the separate telecom ML use cases and from the fifth platform-performance diagnosis component documented below.
 
 <br/>
+
+
+<br/>
+
+<a id="machine-learning"></a>
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=5,10,20&height=70&section=header&text=Machine%20Learning%20Use%20Cases&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=52" width="100%" alt="Machine Learning Use Cases"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=A78BFA&center=true&vCenter=true&width=860&height=28&lines=Four+telecom+analytics+use+cases+%2B+one+platform+diagnostics+model;From+RAN+KPIs+to+actionable+engineering+recommendations" alt="Machine Learning"/>
+</div>
+
+TelcoPulse includes **four telecom-oriented ML use cases** and a **fifth, separate platform-performance diagnosis component**. They serve different goals: the first four analyze radio-network behavior; the fifth studies the performance of the data platform itself. Model family names below describe the approaches explored in the project and should be paired with the actual code and evaluation artifacts in the repository.
+
+### 1. Capacity Forecasting
+
+**Goal:** estimate future cell load and capacity demand so high-utilization cells can be investigated before they become a problem.
+
+- **Problem type:** time-series forecasting / regression.
+- **Candidate signals:** timestamp, `rb_utilization`, `active_users_dl`, traffic volume and other available cell-level KPI measurements.
+- **Approaches discussed:** Gradient Boosting with time-derived features or Prophet where the data is suitable for time-series modeling.
+- **Expected output:** a forecast of future load or utilization for a cell or cell group.
+- **Engineering considerations:** keep cells and technologies appropriately segmented, avoid leakage from future timestamps, and evaluate on a time-based holdout rather than a random split.
+
+### 2. Congestion Prediction
+
+**Goal:** predict whether a cell is likely to cross a configured congestion threshold in a future time window.
+
+- **Problem type:** binary or multi-class classification, depending on the congestion labels.
+- **Candidate signals:** resource-block utilization, active users, traffic indicators, hour-of-day and day-of-week features.
+- **Target:** a clearly defined future threshold event, for example whether utilization exceeds the selected limit in the prediction horizon.
+- **Expected output:** a congestion-risk class or probability that can support proactive investigation.
+- **Engineering considerations:** define the prediction horizon and threshold explicitly, check class imbalance, and report precision/recall or PR-AUC where appropriate. Do not claim predictive accuracy unless the evaluation results are included.
+
+### 3. Energy Optimization
+
+**Goal:** analyze the relationship between network load and radio/baseband energy consumption to identify opportunities for more efficient operation.
+
+- **Problem type:** regression / energy-load analysis.
+- **Candidate signals:** `radio_unit_energy_consumption`, `baseband_energy_consumption`, cooling energy, utilization and active-user measurements where present.
+- **Expected output:** estimated energy consumption under a given load, or a comparison of energy behavior across load conditions.
+- **Potential operational value:** highlight cells or periods where energy appears high relative to observed traffic or utilization.
+- **Engineering considerations:** distinguish correlation from causation. Any suggested power-saving action requires domain constraints and validation; a model estimate alone does not prove that a network configuration should be changed.
+
+### 4. Cell Clustering
+
+**Goal:** group cells with similar traffic and utilization patterns so that network behavior can be explored by profile rather than inspecting every cell individually.
+
+- **Problem type:** unsupervised clustering.
+- **Approach discussed:** K-Means over daily/hourly load profiles and selected KPI features.
+- **Candidate features:** normalized hourly utilization, active-user patterns, traffic indicators and technology-aware features.
+- **Expected output:** cluster assignments and profiles such as consistently high-load, daytime-peaking or lower-activity cells, if those patterns are supported by the data.
+- **Engineering considerations:** normalize features, select the number of clusters deliberately, compare cluster stability and interpret clusters in the context of each technology and frequency band.
+
+### 5. Platform Performance Diagnosis and Recommendation
+
+This is a **separate engineering-focused component**, not a fifth telecom KPI model. It uses benchmark evidence from the TelcoPulse lab to help explain slow jobs, resource pressure or weak scaling, and to recommend the next useful experiment.
+
+| Analysis component | Purpose |
+|---|---|
+| **Log-log runtime regression** | Explore how worker count and workload size relate to runtime; bootstrap intervals can communicate uncertainty when enough observations exist. |
+| **Amdahl's Law analysis** | Estimate the serial fraction and illustrate the theoretical limit to speedup from adding more workers. |
+| **Ethernet vs. Wi-Fi comparison** | Compare matched runs to investigate whether network type may be contributing to runtime differences. |
+| **Resource-rule diagnosis** | Use observed RAM pressure, CPU pressure and streaming delay to flag likely bottlenecks. |
+| **Next-experiment recommendation** | Suggest a targeted benchmark that would help distinguish competing explanations when current evidence is insufficient. |
+
+The component is designed to attach **evidence and a confidence level** (`high`, `medium` or `low`) to recommendations. The project notes specify a conservative behavior: when there are fewer than eight batch benchmark runs, request more evidence rather than making a confident scaling claim. Example recommendations should be labeled as examples unless they are backed by actual records from `benchmark_runs`.
+
+### How these use cases fit the platform
+
+```mermaid
+flowchart TD
+    D["Curated RAN KPIs"] --> F["Feature preparation"]
+    F --> C["Capacity Forecasting"]
+    F --> G["Congestion Prediction"]
+    F --> E["Energy Optimization"]
+    F --> K["Cell Clustering"]
+    B["Platform benchmark records"] --> P["Performance Diagnosis"]
+    P --> R["Evidence-based recommendation"]
+    C --> O["Analytics / model outputs"]
+    G --> O
+    E --> O
+    K --> O
+```
+
+> [!IMPORTANT]
+> The project distinguishes between **implemented pipeline components**, **model approaches explored**, and **validated model performance**. A use case should only be described as fully trained and evaluated when the repository contains the runnable implementation, data preparation, saved model or reproducible training path, and evaluation results. No accuracy, forecast error, energy savings or business impact is asserted here without those measurements.
+
 
 <a id="clickhouse"></a>
 <div align="center">
@@ -602,14 +689,14 @@ Container `clickhouse-node5` on `192.168.1.15` (HTTP `8123`, native `9000`). All
 
 | Table | Cols | Purpose | Partition | Order by | Status |
 |---|:-:|---|---|---|---|
-| `kpi_batch` | 25 | Historical KPIs, multi-technology schema | `toYYYYMM(ts)` | `base_station, technology, ts` | Created · **empty** (no loader yet) |
-| `kpi_stream` | 15 | Windowed real-time KPIs from Kafka | `toDate(window_start)` | `base_station, window_start` | Created · see schema note |
-| `anomalies` | 10 | Detected anomalies with severity and score | — | `detected_at, severity, base_station` | Created · see schema note |
-| `quality_report` | 7 | Data-quality audit results per layer | — | `check_timestamp` | Created · not populated |
-| `benchmark_runs` | 7 | Ingestion-rate and query-latency verification | — | `executed_at` | Created · not populated |
+| `kpi_batch` | 25 | Historical KPIs, multi-technology schema | `toYYYYMM(ts)` | `base_station, technology, ts` | Batch analytics table |
+| `kpi_stream` | 15 | Windowed real-time KPIs from Kafka | `toDate(window_start)` | `base_station, window_start` | Streaming output table |
+| `anomalies` | 10 | Detected anomalies with severity and score | — | `detected_at, severity, base_station` | Anomaly output table |
+| `quality_report` | 7 | Data-quality audit results per layer | — | `check_timestamp` | Data-quality reporting table |
+| `benchmark_runs` | 7 | Ingestion-rate and query-latency verification | — | `executed_at` | Platform benchmark evidence table |
 
-> [!WARNING]
-> **Schema note.** `stream_processor.py` posts fields the tables do not define (`frequency_band`, `radio_quality_cqi`, `radio_unit_energy`, `baseband_energy`, `event_timestamp`, `pipeline`, …), and ClickHouse rejects unknown JSON fields by default. Either align the DDL with the processor, or as a quick workaround add `input_format_skip_unknown_fields=1` to the insert URL. Confirm with `SELECT count() FROM telecom_db.kpi_stream` after a minute of streaming.
+> [!NOTE]
+> The original README captured an earlier schema mismatch during development. The latest project status shared by the team is that the Kafka → stream processor → ClickHouse path is working. When reproducing the project, validate the current `stream_processor.py` payload against `Clickhouse/01_init_schema.sql` and confirm fresh rows in `kpi_stream` and `anomalies`.
 
 <details>
 <summary><b>📋 The 25 columns of <code>kpi_batch</code></b></summary>
@@ -643,10 +730,10 @@ Apache Superset (`superset-node5`, port `8088`, SQLite metadata DB) reaches Clic
 |---|---|
 | **Target URL** | `http://localhost:8088/superset/dashboard/telcopulse-ops/` |
 | **Datasource** | ClickHouse `telecom_db` over HTTP (`8123`) |
-| **Provisioning** | `superset/provision_dashboard.py` *(currently empty)* |
+| **Provisioning** | Superset dashboard configuration and setup scripts in the repository |
 
-> [!IMPORTANT]
-> **Status:** the six dashboard areas below are the **specified design target**. Because the provisioning script is empty, no dashboard is created automatically yet — build them in the Superset UI from the specs, or write the script (see [Roadmap](#roadmap)). Historical dashboards also need the Curated → `kpi_batch` loader.
+> [!NOTE]
+> The six dashboard areas below describe the intended analytical coverage, not a claim that every area exists as a separate dashboard in the final UI. The latest project status shared by the team is that the Superset dashboard is working and connected to the analytics stack. Validate the deployed dashboard names and data sources against the live configuration before reproducing it.
 
 | # | Dashboard | Source table(s) | Refresh | Answers |
 |:-:|---|---|:-:|---|
@@ -697,7 +784,7 @@ Apache Superset (`superset-node5`, port `8088`, SQLite metadata DB) reaches Clic
 </div>
 
 ```text
-TelcoPulseCluster/
+Telco_Pulse_V1/
 ├── 📁 Document/
 │   ├── TelcoPulse_showcase.gif        # pipeline showcase animation
 │   └── TelcoPulse_Complete_Project_Book.docx
@@ -720,7 +807,7 @@ TelcoPulseCluster/
 │   └── 01_init_schema.sql             # telecom_db — five tables
 ├── 📁 superset/
 │   ├── superset_config.py
-│   └── provision_dashboard.py         # currently empty
+│   └── provision_dashboard.py         # dashboard provisioning helper (check current implementation)
 ├── docker-compose.yml                 # ClickHouse + Superset (+ idle kafka-sim)
 ├── spark-defaults.conf                # Spark driver networking / ports
 ├── rustfs.env                         # storage credentials (lab values — do NOT reuse)
@@ -857,7 +944,7 @@ Watch it live: **Kafka UI** `http://192.168.1.13:8080` · **Spark UI** `http://1
 | Superset has no ClickHouse driver | Not in the base image; lost on container re-create | Install `clickhouse-connect`; bake it into a custom image |
 | Stream throughput is low | One HTTP insert per row | Batch inserts or use the Kafka table engine |
 | Rebuilds differ over time | Unpinned `latest` images | Pin versions, record digests |
-| `setup.sh` step 5 does nothing | `provision_dashboard.py` is empty; folder case differs (`Superset/` vs `superset/`) | Write the script and keep one folder name |
+| Dashboard provisioning differs by checkout | Script/folder naming may vary between project revisions | Verify the checked-out repository structure and use a consistent `superset/` path |
 | Log files look like garbage | PowerShell redirect writes UTF-16 | Use `Out-File -Encoding utf8` or `cmd /c` |
 
 </details>
@@ -888,7 +975,7 @@ A complete **project book** accompanies this repository: [`Document/TelcoPulse_C
 <img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=2,12,24&height=70&section=header&text=Conclusion&fontSize=34&fontColor=ffffff&animation=fadeIn&fontAlignY=52" width="100%" alt="Conclusion"/>
 </div>
 
-TelcoPulse shows that a realistic telecom analytics platform can be built end to end on ordinary hardware: **31.9 million curated records** from 2G, 4G and 5G networks flow through a Spark-based lakehouse on S3-compatible storage, while a simulated live feed passes through Kafka toward ClickHouse with rule-based anomaly detection, ready for Apache Superset. The project also exposes the practical side of distributed systems — fixed addressing, listener configuration, S3A connectivity and cross-node networking. Its remaining gaps (no high availability, rule-based detection only, a few unfinished links between layers) are tracked in the roadmap.
+TelcoPulse combines distributed batch processing, simulated real-time telemetry, analytical serving, dashboards, telecom-focused ML use cases and a separate platform-performance diagnosis component in an on-premises lab built from six laptops. The project demonstrates practical engineering across network configuration, cross-host Spark communication, S3-compatible storage, Kafka listeners, schema alignment, resource tuning and analytics delivery. It remains an educational lab rather than a production telecom deployment; high availability and production hardening are outside the stated scope.
 
 <br/>
 
@@ -914,7 +1001,7 @@ TelcoPulse shows that a realistic telecom analytics platform can be built end to
 | **Presented to** | Eng. Ahmed Hassan |
 | **Project period** | October 2026 |
 
-[![GitHub](https://img.shields.io/badge/Repository-MohammedAhmed--01%2FTelcoPulseCluster-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MohammedAhmed-01/TelcoPulseCluster)
+[![GitHub](https://img.shields.io/badge/Repository-MohammedAhmed--01%2FTelco_Pulse_V1-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Mahmoud976/Telco_Pulse_V1)
 
 <br/>
 
