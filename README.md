@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- ═════════════ PIPELINE SHOWCASE — FIRST ELEMENT ═════════════ -->
-<img src="https://raw.githubusercontent.com/Mahmoud976/Telco_Pulse_V1/main/Document/TelcoPulse_showcase.gif" alt="TelcoPulse pipeline showcase" width="100%"/>
+<img src="https://raw.githubusercontent.com/Mahmoud976/Telco_Pulse_V1/main/documents/TelcoPulse_showcase.gif" alt="TelcoPulse pipeline showcase" width="100%"/>
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=12,20,24&height=200&section=header&text=TelcoPulse&fontSize=76&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=A%20Distributed%20Telecom%20Big%20Data%20Analytics%20Platform&descSize=20&descAlignY=60" width="100%" alt="TelcoPulse"/>
 
@@ -598,86 +598,118 @@ Score-based severity: `≥ 1.5 → critical` · `≥ 1.0 → warning` · otherwi
 
 <a id="machine-learning"></a>
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=5,10,20&height=70&section=header&text=Machine%20Learning%20Use%20Cases&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=52" width="100%" alt="Machine Learning Use Cases"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=A78BFA&center=true&vCenter=true&width=860&height=28&lines=Four+telecom+analytics+use+cases+%2B+one+platform+diagnostics+model;From+RAN+KPIs+to+actionable+engineering+recommendations" alt="Machine Learning"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=5,10,20&height=70&section=header&text=Machine%20Learning%20%26%20Intelligence&fontSize=32&fontColor=ffffff&animation=fadeIn&fontAlignY=52" width="100%" alt="Machine Learning and Intelligence"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=A78BFA&center=true&vCenter=true&width=860&height=28&lines=Four+telecom+ML+use+cases+%2B+one+platform+advisor;Forecast+network+load%2C+flag+risk%2C+spot+energy+waste%2C+profile+cells" alt="ML use cases"/>
 </div>
 
-TelcoPulse includes **four telecom-oriented ML use cases** and a **fifth, separate platform-performance diagnosis component**. They serve different goals: the first four analyze radio-network behavior; the fifth studies the performance of the data platform itself. Model family names below describe the approaches explored in the project and should be paired with the actual code and evaluation artifacts in the repository.
-
-### 1. Capacity Forecasting
-
-**Goal:** estimate future cell load and capacity demand so high-utilization cells can be investigated before they become a problem.
-
-- **Problem type:** time-series forecasting / regression.
-- **Candidate signals:** timestamp, `rb_utilization`, `active_users_dl`, traffic volume and other available cell-level KPI measurements.
-- **Approaches discussed:** Gradient Boosting with time-derived features or Prophet where the data is suitable for time-series modeling.
-- **Expected output:** a forecast of future load or utilization for a cell or cell group.
-- **Engineering considerations:** keep cells and technologies appropriately segmented, avoid leakage from future timestamps, and evaluate on a time-based holdout rather than a random split.
-
-### 2. Congestion Prediction
-
-**Goal:** predict whether a cell is likely to cross a configured congestion threshold in a future time window.
-
-- **Problem type:** binary or multi-class classification, depending on the congestion labels.
-- **Candidate signals:** resource-block utilization, active users, traffic indicators, hour-of-day and day-of-week features.
-- **Target:** a clearly defined future threshold event, for example whether utilization exceeds the selected limit in the prediction horizon.
-- **Expected output:** a congestion-risk class or probability that can support proactive investigation.
-- **Engineering considerations:** define the prediction horizon and threshold explicitly, check class imbalance, and report precision/recall or PR-AUC where appropriate. Do not claim predictive accuracy unless the evaluation results are included.
-
-### 3. Energy Optimization
-
-**Goal:** analyze the relationship between network load and radio/baseband energy consumption to identify opportunities for more efficient operation.
-
-- **Problem type:** regression / energy-load analysis.
-- **Candidate signals:** `radio_unit_energy_consumption`, `baseband_energy_consumption`, cooling energy, utilization and active-user measurements where present.
-- **Expected output:** estimated energy consumption under a given load, or a comparison of energy behavior across load conditions.
-- **Potential operational value:** highlight cells or periods where energy appears high relative to observed traffic or utilization.
-- **Engineering considerations:** distinguish correlation from causation. Any suggested power-saving action requires domain constraints and validation; a model estimate alone does not prove that a network configuration should be changed.
-
-### 4. Cell Clustering
-
-**Goal:** group cells with similar traffic and utilization patterns so that network behavior can be explored by profile rather than inspecting every cell individually.
-
-- **Problem type:** unsupervised clustering.
-- **Approach discussed:** K-Means over daily/hourly load profiles and selected KPI features.
-- **Candidate features:** normalized hourly utilization, active-user patterns, traffic indicators and technology-aware features.
-- **Expected output:** cluster assignments and profiles such as consistently high-load, daytime-peaking or lower-activity cells, if those patterns are supported by the data.
-- **Engineering considerations:** normalize features, select the number of clusters deliberately, compare cluster stability and interpret clusters in the context of each technology and frequency band.
-
-### 5. Platform Performance Diagnosis and Recommendation
-
-This is a **separate engineering-focused component**, not a fifth telecom KPI model. It uses benchmark evidence from the TelcoPulse lab to help explain slow jobs, resource pressure or weak scaling, and to recommend the next useful experiment.
-
-| Analysis component | Purpose |
-|---|---|
-| **Log-log runtime regression** | Explore how worker count and workload size relate to runtime; bootstrap intervals can communicate uncertainty when enough observations exist. |
-| **Amdahl's Law analysis** | Estimate the serial fraction and illustrate the theoretical limit to speedup from adding more workers. |
-| **Ethernet vs. Wi-Fi comparison** | Compare matched runs to investigate whether network type may be contributing to runtime differences. |
-| **Resource-rule diagnosis** | Use observed RAM pressure, CPU pressure and streaming delay to flag likely bottlenecks. |
-| **Next-experiment recommendation** | Suggest a targeted benchmark that would help distinguish competing explanations when current evidence is insufficient. |
-
-The component is designed to attach **evidence and a confidence level** (`high`, `medium` or `low`) to recommendations. The project notes specify a conservative behavior: when there are fewer than eight batch benchmark runs, request more evidence rather than making a confident scaling claim. Example recommendations should be labeled as examples unless they are backed by actual records from `benchmark_runs`.
-
-### How these use cases fit the platform
-
-```mermaid
-flowchart TD
-    D["Curated RAN KPIs"] --> F["Feature preparation"]
-    F --> C["Capacity Forecasting"]
-    F --> G["Congestion Prediction"]
-    F --> E["Energy Optimization"]
-    F --> K["Cell Clustering"]
-    B["Platform benchmark records"] --> P["Performance Diagnosis"]
-    P --> R["Evidence-based recommendation"]
-    C --> O["Analytics / model outputs"]
-    G --> O
-    E --> O
-    K --> O
-```
+Machine learning in TelcoPulse is not just a roadmap item. The repository contains a runnable **telecom ML MVP** with four use cases, generated result files and a summary visualization, plus a **separate platform-performance advisor** that analyses the big-data system itself.
 
 > [!IMPORTANT]
-> The project distinguishes between **implemented pipeline components**, **model approaches explored**, and **validated model performance**. A use case should only be described as fully trained and evaluated when the repository contains the runnable implementation, data preparation, saved model or reproducible training path, and evaluation results. No accuracy, forecast error, energy savings or business impact is asserted here without those measurements.
+> **How to read the numbers:** the committed files under `TelcoPulse_ML_MVP/out/` are explicitly marked as **synthetic demo results**. They validate the workflow and code paths; they are not measurements from a live operator network or proof of real-world savings. Run the pipeline against curated project data / ClickHouse to evaluate on real project records.
 
+### ML results at a glance — synthetic demo only
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/Mahmoud976/Telco_Pulse_V1/main/TelcoPulse_ML_MVP/out/ml_summary.png" alt="TelcoPulse telecom ML summary: forecast, congestion, energy waste and cell profiles" width="95%"/>
+</div>
+
+| Demo evaluation | Recorded result | What it means |
+|---|---:|---|
+| Forecasting MAE | **2.328** | Model error on the synthetic holdout |
+| Same-hour-last-week baseline MAE | 2.838 | Reference forecast for comparison |
+| Forecast improvement vs baseline | **18.0%** | Demo model beat the baseline on this test |
+| Cells where model beat baseline | **97.8%** | Across the synthetic cells evaluated |
+| Congestion threshold | **80% utilization** | Configured threshold for congestion risk |
+| Congestion precision / recall | **94.9% / 75.0%** | Demo holdout classification metrics |
+| Cell clustering | **K-Means, 3 clusters** | Silhouette score **0.969** on synthetic profiles |
+| Energy-waste detection | **5 injected demo cells flagged** | Demo-only injected waste; precision/recall 1.00 on that labelled simulation |
+
+The demo used **45 synthetic cells**, with **85,320 training rows** and **15,120 test rows** across a 14-day test period. Because the data intentionally contains designed patterns and injected energy-waste examples, these metrics should not be interpreted as expected performance on operational network data.
+
+### Four telecom ML use cases
+
+<details open>
+<summary><b>1. Capacity Forecasting — predict cell load up to 24 hours ahead</b></summary>
+
+The `TelcoPulse_ML_MVP/src/telcopulse_ml.py` workflow uses a **HistGradientBoostingRegressor** to forecast `rb_utilization` for each cell. Horizon-safe lag and rolling features are used, including 24-, 48- and 168-hour lags. The model is compared against a **same-hour-last-week baseline**; a forecast is only treated as an improvement when the model beats that baseline.
+
+**Output:** `out/forecasts.csv` and forecast metrics in `out/metrics.json`.
+
+</details>
+
+<details>
+<summary><b>2. Congestion Prediction — flag cells at risk in the next 24 hours</b></summary>
+
+The pipeline turns the forecast into an operationally understandable risk signal: hours predicted to reach the configured **80% resource-block utilization threshold** are marked as congestion candidates. The demo summary reports how many cells were flagged for the next 24 hours and precision/recall against the synthetic test labels.
+
+**Output:** congestion flags and evaluation metrics produced by the ML workflow.
+
+</details>
+
+<details>
+<summary><b>3. Energy-Waste Detection — identify cells consuming more energy than expected</b></summary>
+
+A regression-based expected-energy estimate is compared with observed energy relative to load and peer-cell behavior. The workflow flags likely outliers for investigation rather than claiming that a specific radio setting should automatically be changed.
+
+**Output:** `out/energy_waste.csv`. The current committed demo intentionally injects waste into five synthetic cells; the perfect demo precision/recall therefore describes the controlled test setup, not real-world performance or verified energy savings.
+
+</details>
+
+<details>
+<summary><b>4. Cell Clustering — group cells by traffic profile</b></summary>
+
+**K-Means** groups cells by their daily/hourly load behaviour, helping distinguish profiles such as residential evening peaks, daytime business activity and other recurring patterns when supported by the input data. The demo uses three clusters and records a silhouette score.
+
+**Output:** `out/cell_profiles.csv` and cluster metrics in `out/metrics.json`.
+
+</details>
+
+### ML pipeline and integration
+
+```mermaid
+flowchart LR
+    A["RustFS curated Parquet\nLTE / NR / GSM"] --> B["Apache Spark\nHourly per-cell aggregation"]
+    B --> C["ML workflow\nForecast + risk + energy + clusters"]
+    C --> D["Forecasts / flags / profiles\nCSV outputs + metrics"]
+    C -. optional write .-> E["ClickHouse ML tables"]
+```
+
+The Spark entry point `TelcoPulse_ML_MVP/spark/spark_ml_job.py` reads the curated LTE, NR and GSM Parquet paths from RustFS, performs distributed hourly aggregation and cell-history filtering with Spark, then collects the compact hourly series to the driver for the scikit-learn modelling stage. With `--write-clickhouse`, the workflow can write results to the ML tables defined in `TelcoPulse_ML_MVP/sql/05_ml_tables.sql`.
+
+### The separate ML component: platform-performance advisor
+
+This model does **not** predict telecom KPIs. It diagnoses the performance of the TelcoPulse data platform using benchmark records such as workload size, Spark worker count, runtime, network mode, CPU/RAM samples and streaming delay.
+
+<div align="center">
+<img src="https://raw.githubusercontent.com/Mahmoud976/Telco_Pulse_V1/main/TelcoPulse_Benchmark_Advisor/out/advisor_summary.png" alt="TelcoPulse platform benchmark advisor summary" width="95%"/>
+</div>
+
+Its implemented analysis includes:
+
+- **Scaling model:** log-log regression to examine how runtime changes with workload size and worker count, with bootstrap confidence intervals.
+- **Amdahl's Law:** estimates the serial share and illustrates the upper limit of speed-up from adding workers.
+- **Network comparison:** compares matched Ethernet and Wi-Fi benchmark runs.
+- **Resource and streaming rules:** surfaces possible CPU/RAM pressure and excessive streaming delay.
+- **Next-experiment advice:** proposes a focused follow-up test when evidence is incomplete, with a confidence label.
+
+The current checked-in `TelcoPulse_Benchmark_Advisor/out/advice.json` labels its source as **`demo`**. For example, the recorded scaling, Wi-Fi penalty and streaming-delay findings are generated from synthetic benchmark runs; they illustrate the advisor's reasoning format, not verified conclusions about the current six-laptop cluster. The advisor code reads `telecom_db.benchmark_runs` for real runs and is deliberately conservative: below **eight batch benchmark runs**, it avoids strong scaling conclusions and requests more evidence.
+
+### Where to inspect the generated outputs
+
+| Artifact | What it shows |
+|---|---|
+| [ML summary image](TelcoPulse_ML_MVP/out/ml_summary.png) | Visual summary of the four telecom ML use cases |
+| [Forecasts](TelcoPulse_ML_MVP/out/forecasts.csv) | Forecast output for the demo run |
+| [Cell profiles](TelcoPulse_ML_MVP/out/cell_profiles.csv) | Cell clustering/profile output |
+| [Energy-waste results](TelcoPulse_ML_MVP/out/energy_waste.csv) | Cells flagged by the energy analysis |
+| [ML metrics](TelcoPulse_ML_MVP/out/metrics.json) | Demo metrics, with source marked as `demo` |
+| [Platform advisor image](TelcoPulse_Benchmark_Advisor/out/advisor_summary.png) | Summary visualization for system-performance advice |
+| [Platform advisor recommendations](TelcoPulse_Benchmark_Advisor/out/advice.json) | Recommendations and evidence; current committed sample is demo-generated |
+
+> [!NOTE]
+> The four telecom ML use cases are separate from the four **rule-based streaming anomaly detectors** documented in the Streaming section. Rules provide immediate threshold alerts; the ML MVP performs forecasting, congestion-risk derivation, energy-waste analysis and cell profiling. The platform advisor is a further, separate component for tuning the data platform itself.
+
+<br/>
 
 <a id="clickhouse"></a>
 <div align="center">
@@ -981,31 +1013,34 @@ TelcoPulse combines distributed batch processing, simulated real-time telemetry,
 
 <a id="team"></a>
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=70&section=header&text=Team&fontSize=34&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Team"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Designed%2C+built+and+documented+by+five+engineers;Presented+to+Eng.+Ahmed+Hassan" alt="typing"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=gradient&customColorList=12,20,24&height=70&section=header&text=Team%20%26%20Acknowledgements&fontSize=32&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Team and Acknowledgements"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Team+Leader%3A+Mahmoud+Saleh;Four-member+graduation+project+team" alt="Project team"/>
 </div>
 
-<div align="center">
+### Project Team
 
-| 👨‍🏫 Instructor |
-|:-:|
-| **Eng. Ahmed Hassan** |
+| Role | Name |
+|---|---|
+| **Team Leader** | **Mahmoud Saleh** |
+| Team Member | Ali Tharwat |
+| Team Member | Youssef ElToor |
+| Team Member | Basel Tarek |
 
-| 👤 | 👤 | 👤 | 👤 | 👤 |
-|:-:|:-:|:-:|:-:|:-:|
-| **Mahmoud Saleh** | **Ali Tharwat** | **Youssef ElToor** | **Mohammed Salah** | **Basel Tarek** |
+**Supervisor:** Eng. Ahmed Hassan
 
 | | |
 |---|---|
-| **Training** | Huawei HCIA Big Data · National Telecommunication Institute (NTI) |
-| **Presented to** | Eng. Ahmed Hassan |
+| **Training programme** | Huawei HCIA Big Data · National Telecommunication Institute (NTI) |
 | **Project period** | October 2026 |
+| **Repository** | [Mahmoud976/Telco_Pulse_V1](https://github.com/Mahmoud976/Telco_Pulse_V1) |
 
-[![GitHub](https://img.shields.io/badge/Repository-MohammedAhmed--01%2FTelco_Pulse_V1-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Mahmoud976/Telco_Pulse_V1)
+### 🙏 Special Thanks
 
-<br/>
+We would like to express our sincere gratitude to **Eng. Mohammed Salah** for his valuable effort, support, and cooperation throughout the TelcoPulse project. We truly appreciate the time he dedicated to helping us and sharing his knowledge during our project journey.
 
-Thanks to Eng. Ahmed Hassan, NTI, the Huawei HCIA Big Data programme, and the open-source communities behind Apache Spark, Apache Kafka, ClickHouse, Apache Superset, Docker and RustFS.
+### Acknowledgements
+
+We also thank **Eng. Ahmed Hassan**, the National Telecommunication Institute (NTI), the Huawei HCIA Big Data programme, and the open-source communities behind Apache Spark, Apache Kafka, ClickHouse, Apache Superset, Docker and RustFS.
 
 <sub>*Academic-use note: prepared for academic evaluation and learning. Dataset and software names are the property of their respective owners.*</sub>
 
