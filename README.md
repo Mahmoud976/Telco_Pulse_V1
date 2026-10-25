@@ -1043,7 +1043,6 @@ Most of the hard problems were not in the code but in the **network and configur
 <a href="https://github.com/Mahmoud976">
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1200&color=0891B2&center=true&vCenter=true&width=520&height=50&lines=Mahmoud+Saleh" alt="Mahmoud Saleh"/>
 </a>
-<sub><b>TEAM LEADER</b></sub>
 </div>
 
 <br/>
