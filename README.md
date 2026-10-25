@@ -213,7 +213,7 @@ flowchart TB
 | `192.168.1.16` | **Compute** | Spark Worker | `8081` |
 
 > [!NOTE]
-> These are the private LAN addresses of the lab. Change them in `spark-defaults.conf`, the Kafka `ADVERTISED_LISTENERS`, and the Python connection constants to match your network.
+> These are the private LAN addresses of the lab. Change them in `config/spark-defaults.conf`, the Kafka `ADVERTISED_LISTENERS`, and the Python connection constants to match your network.
 
 ### 🔀 Original design vs. what was built
 
@@ -316,7 +316,7 @@ sequenceDiagram
 ```
 
 > [!NOTE]
-> Executors — not only the driver — read from storage, so the S3 endpoint must be reachable from **every** worker laptop and the driver ports must be reachable from every worker. Pinning driver and block-manager ports makes firewall rules predictable. In `spark-defaults.conf`, the `spark.master.*` lines are not real Spark properties and have no effect — the Master is configured by the arguments in `docker/docker-compose.yml`.
+> Executors — not only the driver — read from storage, so the S3 endpoint must be reachable from **every** worker laptop and the driver ports must be reachable from every worker. Pinning driver and block-manager ports makes firewall rules predictable. In `config/spark-defaults.conf`, the `spark.master.*` lines are not real Spark properties and have no effect — the Master is configured by the arguments in `Docker/spark-compose.yml`.
 
 <br/>
 
@@ -761,7 +761,7 @@ Schema file: [`Clickhouse/01_init_schema.sql`](Clickhouse/01_init_schema.sql)
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;size=16&amp;pause=900&amp;color=00D4FF&amp;center=true&amp;vCenter=true&amp;width=860&amp;height=28&amp;lines=Telecom+KPIs+and+analytics+in+Superset" alt="Section subtitle"/>
 </div>
 
-Apache Superset (`superset-node5`, port `8088`, SQLite metadata DB) reaches ClickHouse through the `clickhouse-connect` driver, which `setup.sh` installs. Superset holds no telecom data — a dashboard is exactly as correct as the SQL behind it.
+Apache Superset (`superset-node5`, port `8088`, SQLite metadata DB) reaches ClickHouse through the `clickhouse-connect` driver, which `Docker/setup.sh` installs. Superset holds no telecom data — a dashboard is exactly as correct as the SQL behind it.
 
 | | |
 |---|---|
@@ -808,35 +808,47 @@ Apache Superset (`superset-node5`, port `8088`, SQLite metadata DB) reaches Clic
 
 ```text
 Telco_Pulse_V1/
-├── 📁 Document/
-│   ├── TelcoPulse_showcase.gif        # pipeline showcase animation
-│   └── TelcoPulse_Complete_Project_Book.docx
-├── 📁 docker/
-│   ├── docker-compose.yml             # Spark Master (tp-spark-master)
-│   ├── rustfs-compose.yml             # RustFS (tp-rustfs)
-│   └── spark/
-│       ├── Dockerfile                 # Spark 3.5.9 + S3A jars
-│       └── batch_all_10.py            # single-pass union job
+├── README.md
+├── 📁 Docker/
+│   ├── rustfs-compose.yml           # RustFS object storage
+│   ├── spark-compose.yml            # Spark master
+│   ├── Kafka-compose.yml            # Kafka KRaft + Kafka UI
+│   ├── Clickhouse-compose.yml       # ClickHouse + Superset (+ idle kafka-sim)
+│   ├── env.ps1                      # Spark submit options
+│   ├── rustfs.env                   # legacy duplicate; active compose uses ../config/rustfs.env
+│   └── setup.sh                     # ClickHouse + Superset bootstrap
+├── 📁 Spark/
+│   ├── Dockerfile                   # Spark 3.5.9 + S3A connector
+│   ├── batch_all_10.py              # earlier single-pass union job
+│   ├── s3a_smoke_test.py
+│   ├── test_rustfs_batch.py
+│   └── test_s3a_cluster.py
+├── 📁 config/
+│   ├── rustfs.env                   # RustFS credentials consumed by compose
+│   └── spark-defaults.conf          # Spark driver networking / ports
 ├── 📁 jobs/
-│   ├── ingest_raw.py                  # CSV → Parquet (processed/ingested)
-│   ├── clean_curate.py                # audit + typed Curated Parquet
-│   ├── show_curated.py                # Curated-layer profiling
-│   └── Order.txt                      # run order / commands
+│   ├── ingest_raw.py                # CSV → Parquet (processed/ingested)
+│   ├── clean_curate.py              # audit + typed Curated Parquet
+│   ├── show_curated.py              # Curated-layer profiling
+│   ├── capacity_forecasting.py      # ML forecasting job
+│   ├── benchmark_advisor.py         # platform-performance advisor
+│   └── Dockerfile.ml
 ├── 📁 kafka-cluster/
-│   ├── docker-compose.yml             # Kafka 4.1.0 (KRaft) + Kafka UI
-│   ├── generator.py                   # synthetic RAN telemetry v2.0
-│   └── stream_processor.py            # consumer + 4 anomaly rules
+│   ├── generator.py                 # synthetic RAN telemetry v2.0
+│   └── stream_processor.py          # Kafka consumer + 4 anomaly rules
 ├── 📁 Clickhouse/
-│   └── 01_init_schema.sql             # telecom_db — five tables
-├── 📁 superset/
+│   └── 01_init_schema.sql           # telecom_db — five tables
+├── 📁 Superset/
 │   ├── superset_config.py
-│   └── provision_dashboard.py         # dashboard provisioning helper (check current implementation)
-├── docker-compose.yml                 # ClickHouse + Superset (+ idle kafka-sim)
-├── spark-defaults.conf                # Spark driver networking / ports
-├── rustfs.env                         # storage credentials (lab values — do NOT reuse)
-└── setup.sh                           # analytics-stack bootstrap
+│   └── provision_dashboard.py       # currently empty placeholder
+├── 📁 documents/
+│   ├── TelcoPulse_showcase.gif
+│   └── TelcoPulse_Complete_Project_Book.docx
+├── 📁 rustfs/                       # tracked bucket/folder placeholders
+├── 📁 data/Dataset/                 # dataset folder placeholder
+├── 📁 TelcoPulse_ML_MVP/
+└── 📁 TelcoPulse_Benchmark_Advisor/
 ```
-
 <br/>
 
 <a id="quickstart"></a>
@@ -847,31 +859,38 @@ Telco_Pulse_V1/
 
 ### Prerequisites
 
-- Docker & Docker Compose (Docker Desktop with WSL 2 on Windows)
-- Python 3.10+ (`pip install kafka-python numpy requests`)
-- PowerShell for the Spark job commands, Bash for `setup.sh`
-- Fixed LAN addresses for each node (see [Network & Infrastructure](#network))
-- All images, JARs and datasets **pre-downloaded** if the lab LAN has no Internet
+- Docker Desktop + Docker Compose (WSL 2 backend on Windows)
+- Python 3.10+ for the synthetic generator and stream processor
+- PowerShell for batch jobs; Bash for the analytics-stack bootstrap
+- Fixed LAN addresses for the six laptops (see [Network & Infrastructure](#network))
+- **Spark connector JARs:** place `hadoop-aws-3.3.4.jar` and `aws-java-sdk-bundle-1.12.262.jar` in `Spark/jars/` before building; the Dockerfile expects these files, and they are not tracked in this repository
+- Pre-download images, JARs and datasets if the lab network has no Internet
 
 ### 1 · Object storage — laptop `.12`
 
-```powershell
-docker compose -f docker/rustfs-compose.yml up -d     # S3 API :9000 · console :9001
-```
-Create the buckets **`raw`**, **`processed`**, **`curated`** in the console and upload the ten `Dataset_*.csv` files into `raw`.
-
-### 2 · Spark — laptop `.11` (build once), workers on `.14` / `.16`
+Run from the repository root:
 
 ```powershell
-docker build -t telcopulse-spark-s3a:3.5.9 docker/spark
-docker compose -f docker/docker-compose.yml up -d     # Master :7077 · UI :8080
+docker compose -f Docker/rustfs-compose.yml up -d     # S3 API :9000 · console :9001
 ```
+
+Create the buckets **`raw`**, **`processed`**, and **`curated`** in the RustFS console and upload the ten `Dataset_*.csv` files into `raw`.
+
+### 2 · Spark — laptop `.11`; workers on `.14` / `.16`
+
+```powershell
+docker build -t telcopulse-spark-s3a:3.5.9 -f Spark/Dockerfile Spark
+docker compose -f Docker/spark-compose.yml up -d     # Master :7077 · UI :8080
+```
+
+The Spark image build requires the two connector JARs listed above. The Compose file starts the master; workers must be started/configured on their own laptops using the same image and the master URL `spark://192.168.1.11:7077`.
 
 ### 3 · Batch pipeline
 
+The committed helper is `Docker/env.ps1`. It configures `$JOBS` and the `spark-submit` options for the lab. Run in PowerShell from the repository root:
+
 ```powershell
-# One-time per shell: sets $JOBS and the $conf array of spark-submit options
-. .\env.ps1
+. .\Docker\env.ps1
 
 # a) Raw → Processed
 docker run --rm -p 7080:7080 -p 7081:7081 -p 4040:4040 -v "${JOBS}:/jobs" `
@@ -879,13 +898,13 @@ docker run --rm -p 7080:7080 -p 7081:7081 -p 4040:4040 -v "${JOBS}:/jobs" `
   > jobs\ingest_out.txt 2>&1
 Select-String -Path jobs\ingest_out.txt -Pattern "^INGEST"
 
-# b) Processed → Curated (audit + curate)
+# b) Processed → Curated
 docker run --rm -p 7080:7080 -p 7081:7081 -p 4040:4040 -v "${JOBS}:/jobs" `
   telcopulse-spark-s3a:3.5.9 /opt/spark/bin/spark-submit @conf /jobs/clean_curate.py all `
   > jobs\clean_out.txt 2>&1
 Select-String -Path jobs\clean_out.txt -Pattern "^(CHECK|CLEAN|DONE)|FetchFailed|OutOfMemory|NoSuchBucket|Path does not exist"
 
-# c) Inspect the Curated layer
+# c) Inspect Curated output
 docker run --rm -p 7080:7080 -p 7081:7081 -p 4040:4040 -v "${JOBS}:/jobs" `
   telcopulse-spark-s3a:3.5.9 /opt/spark/bin/spark-submit @conf /jobs/show_curated.py `
   > jobs\show_out.txt 2>&1
@@ -893,53 +912,61 @@ Select-String -Path jobs\show_out.txt -Pattern "^SHOW|^\||^\+-"
 ```
 
 > [!TIP]
-> **Finish the tenth file.** Both jobs accept `all` **or** specific files, so only the failed one needs re-running: `ingest_raw.py Dataset_03_NR_3500`, then `clean_curate.py Dataset_03_NR_3500`, then `show_curated.py`. Start the Master with its LAN address instead of `0.0.0.0`, give executors explicit memory/cores, and prefer Ethernet for the workers.
+> The batch scripts accept `all` or a specific file stem, for example `Dataset_03_NR_3500`. The recorded run did not complete that final file; re-run ingestion and curation for it before expecting all ten datasets in the Curated layer.
 
-> [!NOTE]
-> `env.ps1` is referenced by `Order.txt` but is **not committed** — it sets `$JOBS` and the Spark/S3A arguments. Commit a sanitised version that reads secrets from environment variables.
+> [!WARNING]
+> Before running the helper, verify `Docker/env.ps1` points to the current RustFS host and correct local jobs directory. This file contains lab-specific values and should be sanitized before reuse on another machine.
 
 ### 4 · Kafka — laptop `.13`
 
+```powershell
+docker compose -f Docker/Kafka-compose.yml up -d    # broker :9092 · Kafka UI :8080
+```
+
+Run the generator and consumer on the intended hosts (the generator defaults to `localhost:9092`; the consumer defaults to `192.168.1.13:9092`):
+
 ```bash
-docker compose -f kafka-cluster/docker-compose.yml up -d    # broker :9092 · Kafka UI :8080
+python kafka-cluster/generator.py        # terminal A — synthetic telemetry
+python kafka-cluster/stream_processor.py # terminal B — consume, store, detect anomalies
 ```
 
 ### 5 · ClickHouse + Superset — laptop `.15`
 
-```bash
-export SUPERSET_SECRET_KEY="<your-own-secret>"
-bash setup.sh     # starts ClickHouse + Superset, installs the driver, creates the admin user
+Set a unique secret before bootstrapping, then run the setup script from the repository root:
 
-# apply the schema
+```bash
+export SUPERSET_SECRET_KEY="<your-own-long-random-secret>"
+bash Docker/setup.sh
+```
+
+Apply the schema:
+
+```bash
 cat Clickhouse/01_init_schema.sql | docker exec -i clickhouse-node5 \
   clickhouse-client --user "$CH_USER" --password "$CH_PASSWORD" --multiquery
 ```
 
-### 6 · Stream
+The current Compose file still defines lab ClickHouse credentials; use those only on the isolated lab and replace them before any reuse.
 
-```bash
-python kafka-cluster/generator.py            # terminal A — produce synthetic telemetry
-python kafka-cluster/stream_processor.py     # terminal B — consume, store, detect anomalies
-```
-
-Watch it live: **Kafka UI** `http://192.168.1.13:8080` · **Spark UI** `http://192.168.1.11:8080` · **Superset** `http://<laptop-.15>:8088`
+Watch it live: **Kafka UI** `http://192.168.1.13:8080` · **Spark UI** `http://192.168.1.11:8080` · **Superset** `http://192.168.1.15:8088`
 
 ### ⚙️ Configuration reference
 
 | Setting | Where | Value |
 |---|---|---|
-| Spark master URL | `batch_all_10.py`, jobs | `spark://192.168.1.11:7077` |
-| Spark driver ports | `spark-defaults.conf` | driver `7078` · block manager `7079` |
-| Kafka bootstrap (producer) | `generator.py` → `KAFKA_BROKER` | `localhost:9092` |
-| Kafka bootstrap (consumer) | `stream_processor.py` → `KAFKA_BROKER` | `192.168.1.13:9092` |
+| Spark master URL | `Docker/env.ps1`, Spark job options | `spark://192.168.1.11:7077` |
+| Spark driver ports | `config/spark-defaults.conf`, `Docker/env.ps1` | driver `7078` in defaults; helper currently uses `7080` · block manager `7079` in defaults; helper uses `7081` |
+| S3A endpoint | `Docker/env.ps1` / Spark submit options | Must point to RustFS host `192.168.1.12:9000` |
+| Kafka bootstrap (producer) | `kafka-cluster/generator.py` → `KAFKA_BROKER` | `localhost:9092` |
+| Kafka bootstrap (consumer) | `kafka-cluster/stream_processor.py` → `KAFKA_BROKER` | `192.168.1.13:9092` |
 | Kafka topic | both scripts | `telecom_stream` |
-| Emit interval / window | `generator.py` | `0.10 s` / `300 s` |
-| ClickHouse HTTP endpoint | `stream_processor.py` → `CLICKHOUSE_URL` | `http://192.168.1.15:8123/` |
-| Kafka listeners | `kafka-cluster/docker-compose.yml` | `INTERNAL :29092` · `EXTERNAL :9092` · `CONTROLLER :9093` |
-| Credentials & secrets | `rustfs.env`, compose files, `CH_AUTH` | ⚠️ lab values only — use env vars / `.env` for anything else |
+| Emit interval / window | `kafka-cluster/generator.py` | `0.10 s` / `300 s` |
+| ClickHouse HTTP endpoint | `kafka-cluster/stream_processor.py` → `CLICKHOUSE_URL` | `http://192.168.1.15:8123/` |
+| Kafka listeners | `Docker/Kafka-compose.yml` | `INTERNAL :29092` · `EXTERNAL :9092` · `CONTROLLER :9093` |
+| Credentials & secrets | `config/rustfs.env`, Compose files, `CH_AUTH` | Lab-only values; replace and externalize before reuse |
 
 > [!WARNING]
-> The credentials in this repository are **lab-only values** for an isolated local network — never reuse them, and rotate any value that was ever committed or pasted into a chat. For any other deployment, move access keys, database passwords and `SUPERSET_SECRET_KEY` into environment variables or an untracked `.env` file, and add those files to `.gitignore`.
+> Lab credentials have been committed in configuration/code. Do not reuse them outside the isolated lab. Rotate any value that was exposed, move credentials and `SUPERSET_SECRET_KEY` to environment variables or an untracked `.env`, and add secret files to `.gitignore`.
 
 ### 🧪 Validation checklist
 
@@ -947,10 +974,9 @@ Watch it live: **Kafka UI** `http://192.168.1.13:8080` · **Spark UI** `http://1
 |---|---|---|
 | Network | `ping` all six hosts | Replies from every host |
 | Spark | Browse `http://192.168.1.11:8080` | Master `ALIVE`, workers registered |
-| Ingest | `Select-String ingest_out.txt "^INGEST"` | `rows_in == rows_out`, status `OK` |
-| Curate | `Select-String clean_out.txt "^(CHECK\|CLEAN\|DONE)"` | Every file `OK` |
+| Ingest | `Select-String jobs\ingest_out.txt "^INGEST"` | `rows_in == rows_out`, status `OK` |
+| Curate | `Select-String jobs\clean_out.txt "^(CHECK\|CLEAN\|DONE)"` | Every processed file `OK` |
 | Counts | `show_curated.py` | LTE `18,750,012` · NR `7,558,148` · GSM `5,595,932` (nine files) |
-| Failures | grep for `FetchFailed`, `OutOfMemory`, `Lost executor` | None |
 | ClickHouse | `SHOW TABLES FROM telecom_db` | Five tables |
 | Stream | `SELECT count() FROM telecom_db.kpi_stream` | Grows while the generator runs |
 
@@ -992,7 +1018,7 @@ Watch it live: **Kafka UI** `http://192.168.1.13:8080` · **Spark UI** `http://1
 <img src="https://capsule-render.vercel.app/api?type=rect&amp;section=header&amp;text=Documentation&amp;fontSize=34&amp;color=gradient&amp;customColorList=12%2C20%2C24&amp;height=70&amp;fontColor=ffffff&amp;animation=scaleIn&amp;fontAlignY=52" width="100%" alt="Documentation"/>
 </div>
 
-A complete **project book** accompanies this repository: [`Document/TelcoPulse_Complete_Project_Book.docx`](Document/TelcoPulse_Complete_Project_Book.docx). It covers the architecture, router and network setup with screenshots, every pipeline, ClickHouse schemas, dashboard specifications, testing, troubleshooting and operations runbooks.
+A complete **project book** accompanies this repository: [`documents/TelcoPulse_Complete_Project_Book.docx`](documents/TelcoPulse_Complete_Project_Book.docx). It covers the architecture, router and network setup with screenshots, every pipeline, ClickHouse schemas, dashboard specifications, testing, troubleshooting and operations runbooks.
 
 | Reader | Start with |
 |---|---|
