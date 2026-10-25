@@ -595,7 +595,7 @@ Score-based severity: `≥ 1.5 → critical` · `≥ 1.0 → warning` · otherwi
 
 <a id="machine-learning"></a>
 <div align="center">
-![Machine Learning and Intelligence](https://capsule-render.vercel.app/api?type=rect%26text=Machine%2520Learning%2520and%2520Intelligence%26fontSize=34%26color=gradient%26customColorList=12%252C20%252C24%26height=70%26fontColor=ffffff%26animation=scaleIn%26fontAlignY=52)
+![Machine Learning and Intelligence](https://capsule-render.vercel.app/api?type=rect&text=Machine%20Learning%20and%20Intelligence&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52)
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&amp;size=16&amp;pause=900&amp;color=00D4FF&amp;center=true&amp;vCenter=true&amp;width=860&amp;height=28&amp;lines=Four+telecom+ML+use+cases+plus+a+platform+advisor" alt="Section subtitle"/>
 </div>
 
