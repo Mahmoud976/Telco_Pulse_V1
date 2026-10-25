@@ -943,7 +943,7 @@ Apply the schema:
 
 ```bash
 cat Clickhouse/01_init_schema.sql | docker exec -i clickhouse-node5 \
-  clickhouse-client --user "$CH_USER" --password "$CH_PASSWORD" --multiquery
+  clickhouse-client --user admin --password "bigdata123" --multiquery
 ```
 
 The Compose file still uses lab ClickHouse credentials. Keep them confined to the isolated lab and replace them before reuse.
@@ -1006,7 +1006,7 @@ Watch it live: **Kafka UI** `http://192.168.1.13:8080` · **Spark UI** `http://1
 | Superset has no ClickHouse driver | Not in the base image; lost on container re-create | Install `clickhouse-connect`; bake it into a custom image |
 | Stream throughput is low | One HTTP insert per row | Batch inserts or use the Kafka table engine |
 | Rebuilds differ over time | Unpinned `latest` images | Pin versions, record digests |
-| Dashboard provisioning differs by checkout | Script/folder naming may vary between project revisions | Verify the checked-out repository structure and use a consistent `superset/` path |
+| Dashboard provisioning differs by checkout | Script/folder naming may vary between project revisions | Verify the checked-out repository structure and use the actual `Superset/` directory path |
 | Log files look like garbage | PowerShell redirect writes UTF-16 | Use `Out-File -Encoding utf8` or `cmd /c` |
 
 </details>
