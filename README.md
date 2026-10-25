@@ -39,7 +39,7 @@
 
 <br/>
 
-**[Overview](#overview) · [Results](#results) · [Architecture](#architecture) · [Network](#network) · [Spark](#spark) · [Data Lake](#datalake) · [Dataset](#dataset) · [Batch](#batch) · [Streaming](#streaming) · [Anomalies](#anomalies) · [Machine Learning](#machine-learning) · [ClickHouse](#clickhouse) · [Dashboards](#dashboards) · [Structure](#structure) · [Quick Start](#quickstart) · [Troubleshooting](#troubleshooting) · [Docs](#documentation) · [Conclusion](#conclusion) · [Team](#team)**
+**[Overview](#overview) · [Results](#results) · [Architecture](#architecture) · [Network](#network) · [Spark](#spark) · [Data Lake](#datalake) · [Dataset](#dataset) · [Batch](#batch) · [Streaming](#streaming) · [Anomalies](#anomalies) · [Machine Learning](#machine-learning) · [ClickHouse](#clickhouse) · [Dashboards](#dashboards) · [Structure](#structure) · [Quick Start](#quickstart) · [Troubleshooting](#troubleshooting) · [Docs](#documentation) · [Conclusion](#conclusion) · [Team](#team) · [Supervisor](#supervisor) · [Thanks](#acknowledgements)**
 
 </div>
 
@@ -1040,21 +1040,50 @@ Most of the hard problems were not in the code but in the **network and configur
 <a id="team"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&color=0:0B1F3A,100:0E7490&height=70&section=header&text=Team&fontSize=34&fontColor=ffffff&animation=fadeIn&fontAlignY=52" width="100%" alt="Team"/>
+<a href="https://github.com/Mahmoud976">
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1200&color=0891B2&center=true&vCenter=true&width=520&height=50&lines=Mahmoud+Saleh" alt="Mahmoud Saleh"/>
+</a>
+<sub><b>TEAM LEADER</b></sub>
 </div>
 
-| Name | Role |
-|---|---|
-| [**Mahmoud Saleh**](https://github.com/Mahmoud976) | Team Leader |
-| **Ali Tharwat** | Team Member |
-| **Youssef ElToor** | Team Member |
-| **Basel Tarek** | Team Member |
-| **Eng. Ahmed Hassan** | Supervisor |
+<br/>
 
-### 🙏 Acknowledgements
+<div align="center">
 
-Special thanks to [**Eng. Mohammed Salah**](https://github.com/MohammedAhmed-01) for his time, support and technical guidance throughout the project.
+| Team Members |
+|:-:|
+| **Ali Tharwat** |
+| **Youssef ElToor** |
+| **Basel Tarek** |
 
-We also thank the **National Telecommunication Institute (NTI)** and the **Huawei HCIA Big Data** programme, and the open-source communities behind Apache Spark, Apache Kafka, ClickHouse, Apache Superset, Docker and RustFS.
+</div>
+
+<br/>
+
+<a id="supervisor"></a>
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0B1F3A,100:0E7490&height=70&section=header&text=Supervisor&fontSize=34&fontColor=ffffff&animation=fadeIn&fontAlignY=52" width="100%" alt="Supervisor"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1200&color=0891B2&center=true&vCenter=true&width=620&height=50&lines=Eng.+Ahmed+Hassan" alt="Eng. Ahmed Hassan"/>
+<sub><b>PROJECT SUPERVISOR</b></sub>
+</div>
+
+<br/>
+
+<a id="acknowledgements"></a>
+<div align="center">
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:0B1F3A,100:0E7490&height=70&section=header&text=Acknowledgements&fontSize=34&fontColor=ffffff&animation=fadeIn&fontAlignY=52" width="100%" alt="Acknowledgements"/>
+<a href="https://github.com/MohammedAhmed-01">
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=26&pause=1200&color=0891B2&center=true&vCenter=true&width=660&height=50&lines=Eng.+Mohammed+Salah" alt="Eng. Mohammed Salah"/>
+</a>
+<sub><b>SPECIAL THANKS</b></sub>
+
+<br/><br/>
+
+Thank you for your time, support and technical guidance throughout the TelcoPulse project.
+
+<sub>We also thank the **National Telecommunication Institute (NTI)**, the **Huawei HCIA Big Data** programme,<br/>and the open-source communities behind Apache Spark, Apache Kafka, ClickHouse, Apache Superset, Docker and RustFS.</sub>
+
+</div>
 
 <br/>
 
