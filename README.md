@@ -802,7 +802,8 @@ Apache Superset (`superset-node5`, port `8088`, SQLite metadata DB) reaches Clic
 
 <a id="structure"></a>
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Repository%20Structure&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Repository Structure"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Repository%20Structure&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=90&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Repository Structure"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=A+clear+map+of+the+TelcoPulse+project+files" alt="Repository Structure animated subtitle"/>
 </div>
 
 ```text
@@ -1039,8 +1040,8 @@ Most of the hard problems were not in the code but in the **network and configur
 
 <a id="team"></a>
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Team%20%26%20Acknowledgements&fontSize=30&color=0B1F3A&height=90&fontColor=ffffff&animation=fadeIn&fontAlignY=52" width="100%" alt="Team and Acknowledgements"/>
-<p><em>The people behind the TelcoPulse distributed telecom analytics platform</em></p>
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Team%20%26%20Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=90&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Team and Acknowledgements"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=The+people+behind+the+TelcoPulse+distributed+platform" alt="Team section animated subtitle"/>
 </div>
 
 ### 👥 Project Team
