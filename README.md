@@ -1,12 +1,12 @@
 <div align="center">
 
 <!-- ═════════════ PIPELINE SHOWCASE — FIRST ELEMENT ═════════════ -->
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=TelcoPulse&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="TelcoPulse"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0B1F3A,50:0E4C73,100:00B4D8&height=200&section=header&text=TelcoPulse&fontSize=76&fontColor=ffffff&animation=fadeIn&fontAlignY=38&desc=A%20Distributed%20Telecom%20Big%20Data%20Analytics%20Platform&descSize=20&descAlignY=60" width="100%" alt="TelcoPulse"/>
 
 <img src="https://raw.githubusercontent.com/Mahmoud976/Telco_Pulse_V1/main/documents/TelcoPulse_showcase.gif" alt="TelcoPulse pipeline showcase" width="100%"/>
 
 <a href="https://github.com/Mahmoud976/Telco_Pulse_V1">
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Six+laptops.+One+router.+One+distributed+platform.;Spark+%2B+RustFS+S3+lakehouse+on+physical+machines;Kafka+streaming+%E2%86%92+ClickHouse+%E2%86%92+Superset;31.9+million+curated+telecom+KPI+rows" alt="TelcoPulse platform highlights"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1100&color=0891B2&center=true&vCenter=true&width=900&height=40&lines=Six+laptops.+One+router.+One+distributed+platform.;Spark+%2B+RustFS+S3+lakehouse+on+physical+machines;Kafka+streaming+%E2%86%92+ClickHouse+%E2%86%92+Superset;31.9+million+curated+telecom+KPI+rows" alt="Typing animation"/>
 </a>
 
 <br/>
@@ -48,7 +48,7 @@
 <a id="overview"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Project%20Overview&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Project Overview"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=A+distributed+telecom+big+data+analytics+platform" alt="Project Overview subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=A+distributed+telecom+big+data+analytics+platform" alt="Section subtitle"/>
 </div>
 
 **TelcoPulse** is an end-to-end data engineering platform for **Radio Access Network (RAN) analytics**. It ingests historical 5G / 4G / 2G performance-management counters in batch **and** simulates a live telemetry feed, then serves both through a single analytical store with dashboards and automated anomaly detection.
@@ -110,8 +110,8 @@ timeline
 
 <a id="results"></a>
 <div align="center">
-<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Project%20Overview&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Project Overview"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=A+distributed+telecom+big+data+analytics+platform" alt="Project Overview subtitle"/>
+<img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Results%20at%20a%20Glance&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Results at a Glance"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=31.9M+curated+rows+across+LTE%2C+NR+and+GSM" alt="Section subtitle"/>
 </div>
 
 ```mermaid
@@ -146,7 +146,7 @@ pie showData title Curated rows by technology
 <a id="architecture"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Architecture&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Architecture"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Batch+and+streaming+united+in+one+analytics+platform" alt="Architecture subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Batch+and+streaming+united+in+one+analytics+platform" alt="Section subtitle"/>
 </div>
 
 TelcoPulse follows a **Lambda-style design**: a batch layer for historical data, a speed layer for live telemetry and a shared serving layer. The five logical layers are infrastructure → storage (RustFS) → processing (Spark, Kafka) → analytical storage (ClickHouse) → presentation (Superset); data quality and anomaly detection cut across them.
@@ -234,7 +234,7 @@ The repository is the source of truth. Where the original design and the as-buil
 <a id="network"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Network%20and%20Infrastructure&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Network and Infrastructure"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Six+physical+laptops+connected+through+a+private+LAN" alt="Network and Infrastructure subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Six+physical+laptops+connected+through+a+private+LAN" alt="Section subtitle"/>
 </div>
 
 Every service address is hard-coded in configuration (Spark master URL, S3A endpoint, Kafka advertised listener, ClickHouse URL). If a laptop received a new IP after a reboot, the cluster would break — so the lab uses **DHCP reservations** on the router.
@@ -289,7 +289,7 @@ Invoke-RestMethod http://192.168.1.15:8123/ping     # 3. application level → "
 <a id="spark"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Spark%20Cluster&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Spark Cluster"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Distributed+batch+processing+with+Apache+Spark" alt="Spark Cluster subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Distributed+batch+processing+with+Apache+Spark" alt="Section subtitle"/>
 </div>
 
 | Item | Value |
@@ -323,7 +323,7 @@ sequenceDiagram
 <a id="datalake"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Data%20Lake%20%C2%B7%20RustFS&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Data Lake"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=S3-compatible+storage+from+raw+to+processed+to+curated" alt="Data Lake · RustFS subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=S3-compatible+storage+from+raw+to+processed+to+curated" alt="Section subtitle"/>
 </div>
 
 Three buckets separate data by processing stage, protecting original data and giving downstream consumers a stable, cleaned dataset.
@@ -367,7 +367,7 @@ Three buckets separate data by processing stage, protecting original data and gi
 <a id="dataset"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Dataset&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Dataset"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Public+RAN+counters+covering+2G%2C+4G+and+5G" alt="Dataset subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Public+RAN+counters+covering+2G%2C+4G+and+5G" alt="Section subtitle"/>
 </div>
 
 Historical data comes from live-network **performance-management counters** published on Zenodo ([`10.5281/zenodo.17815388`](https://doi.org/10.5281/zenodo.17815388)), recorded at **15-minute intervals** (about 767 MB as initially reported). The generator's behaviour is additionally calibrated against 4G LTE field traces ([`10.5281/zenodo.1219679`](https://doi.org/10.5281/zenodo.1219679)).
@@ -407,7 +407,7 @@ Historical data comes from live-network **performance-management counters** publ
 <a id="batch"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Batch%20Pipeline&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Batch Pipeline"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Audited+batch+processing+with+data-quality+checks" alt="Batch Pipeline subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Audited+batch+processing+with+data-quality+checks" alt="Section subtitle"/>
 </div>
 
 Three PySpark jobs implement a clean **raw → ingested → curated** flow. Each is re-runnable per file and prints greppable, prefixed log lines (`INGEST`, `CHECK`, `CLEAN`, `DONE`, `SHOW`).
@@ -478,7 +478,7 @@ No file had unparseable timestamps, null stations/sectors, or non-numeric metric
 <a id="streaming"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Streaming%20Pipeline&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Streaming Pipeline"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Synthetic+telecom+events+flow+through+Kafka+to+ClickHouse" alt="Streaming Pipeline subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Synthetic+telecom+events+flow+through+Kafka+to+ClickHouse" alt="Section subtitle"/>
 </div>
 
 ```mermaid
@@ -574,7 +574,7 @@ stateDiagram-v2
 <a id="anomalies"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Anomaly%20Detection&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Anomaly Detection"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Four+rule-based+detectors+with+severity+grading" alt="Anomaly Detection subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Four+rule-based+detectors+with+severity+grading" alt="Section subtitle"/>
 </div>
 
 Every Kafka event is written to `kpi_stream`, then evaluated by `stream_processor.py` against four rules. Each hit becomes a row in `anomalies` with an `anomaly_score` and a `severity`.
@@ -596,7 +596,7 @@ Score-based severity: `≥ 1.5 → critical` · `≥ 1.0 → warning` · otherwi
 <a id="machine-learning"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Machine%20Learning%20%26%20Intelligence&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Machine Learning and Intelligence"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Telecom+ML+use+cases+and+platform+performance+insights" alt="Machine Learning & Intelligence subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Four+telecom+ML+use+cases+plus+a+platform+advisor" alt="Section subtitle"/>
 </div>
 
 Machine learning in TelcoPulse is not just a roadmap item. The repository contains a runnable **telecom ML MVP** with four use cases, generated result files and a summary visualization, plus a **separate platform-performance advisor** that analyses the big-data system itself.
@@ -625,7 +625,7 @@ The demo used **45 synthetic cells**, with **85,320 training rows** and **15,120
 
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Four%20Telecom%20ML%20Use%20Cases&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Four Telecom ML Use Cases"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Forecasting%2C+congestion%2C+energy+and+cell+clustering" alt="Four Telecom ML Use Cases subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Four+telecom+ML+use+cases+plus+a+platform+advisor" alt="Section subtitle"/>
 </div>
 
 
@@ -679,7 +679,7 @@ The Spark entry point `TelcoPulse_ML_MVP/spark/spark_ml_job.py` reads the curate
 
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Platform%20Performance%20Advisor&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Platform Performance Advisor"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Benchmark-based+diagnostics+for+platform+bottlenecks" alt="Platform Performance Advisor subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Four+telecom+ML+use+cases+plus+a+platform+advisor" alt="Section subtitle"/>
 </div>
 
 
@@ -719,7 +719,7 @@ The current checked-in `TelcoPulse_Benchmark_Advisor/out/advice.json` labels its
 <a id="clickhouse"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=ClickHouse%20Serving%20Layer&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="ClickHouse"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Columnar+analytics+for+telecom+time-series+data" alt="ClickHouse Serving Layer subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Columnar+analytics+for+telecom+time-series+data" alt="Section subtitle"/>
 </div>
 
 Container `clickhouse-node5` on `192.168.1.15` (HTTP `8123`, native `9000`). All tables use `MergeTree`, `LowCardinality` strings and time-based partitioning/ordering.
@@ -758,7 +758,7 @@ Schema file: [`Clickhouse/01_init_schema.sql`](Clickhouse/01_init_schema.sql)
 <a id="dashboards"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Dashboards&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Dashboards"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Telecom+KPIs+and+analytics+in+Superset" alt="Dashboards subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Telecom+KPIs+and+analytics+in+Superset" alt="Section subtitle"/>
 </div>
 
 Apache Superset (`superset-node5`, port `8088`, SQLite metadata DB) reaches ClickHouse through the `clickhouse-connect` driver, which `setup.sh` installs. Superset holds no telecom data — a dashboard is exactly as correct as the SQL behind it.
@@ -803,7 +803,6 @@ Apache Superset (`superset-node5`, port `8088`, SQLite metadata DB) reaches Clic
 <a id="structure"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Repository%20Structure&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Repository Structure"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Project+code%2C+configuration+and+documentation" alt="Repository Structure subtitle"/>
 </div>
 
 ```text
@@ -842,7 +841,7 @@ Telco_Pulse_V1/
 <a id="quickstart"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Quick%20Start&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Quick Start"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Storage+to+Spark+to+batch+and+streaming" alt="Quick Start subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Storage+to+Spark+to+batch+and+streaming" alt="Section subtitle"/>
 </div>
 
 ### Prerequisites
@@ -959,7 +958,7 @@ Watch it live: **Kafka UI** `http://192.168.1.13:8080` · **Spark UI** `http://1
 <a id="troubleshooting"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Troubleshooting&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Troubleshooting"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Lessons+and+fixes+from+building+the+distributed+lab" alt="Troubleshooting subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Lessons+and+fixes+from+building+the+distributed+lab" alt="Section subtitle"/>
 </div>
 
 <details open>
@@ -990,7 +989,6 @@ Watch it live: **Kafka UI** `http://192.168.1.13:8080` · **Spark UI** `http://1
 <a id="documentation"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Documentation&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Documentation"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=Project+book%2C+implementation+details+and+runbooks" alt="Documentation subtitle"/>
 </div>
 
 A complete **project book** accompanies this repository: [`Document/TelcoPulse_Complete_Project_Book.docx`](Document/TelcoPulse_Complete_Project_Book.docx). It covers the architecture, router and network setup with screenshots, every pipeline, ClickHouse schemas, dashboard specifications, testing, troubleshooting and operations runbooks.
@@ -1010,7 +1008,6 @@ A complete **project book** accompanies this repository: [`Document/TelcoPulse_C
 <a id="conclusion"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Conclusion&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Conclusion"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=A+complete+educational+telecom+analytics+platform" alt="Conclusion subtitle"/>
 </div>
 
 TelcoPulse shows that a real distributed data platform can be built from ordinary hardware: six laptops, one router, and a stack that covers storage, batch processing, streaming, analytical serving and dashboards end to end.
@@ -1020,9 +1017,7 @@ TelcoPulse shows that a real distributed data platform can be built from ordinar
 - A **medallion-style lakehouse** on RustFS with `raw → processed → curated` layers and **31.9 M curated rows**.
 - A **distributed Spark** batch pipeline, audited at every step with row-count reconciliation.
 - A **live streaming path** (Kafka → Python consumer → ClickHouse) with four rule-based anomaly detectors.
-- A **ClickHouse + Superset** serving layer, pl
-<div align="center">
-us four telecom ML use cases and a platform performance advisor.
+- A **ClickHouse + Superset** serving layer, plus four telecom ML use cases and a platform performance advisor.
 
 ### 🎓 What we learned
 
@@ -1043,7 +1038,6 @@ Most of the hard problems were not in the code but in the **network and configur
 <br/>
 
 <a id="team"></a>
-<div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Team%20%26%20Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Team & Acknowledgements"/>
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=The+team+behind+the+TelcoPulse+distributed+platform" alt="Section subtitle"/>
 </div>
@@ -1072,7 +1066,7 @@ A collaborative team bringing together data engineering, distributed systems, an
 <a id="supervisor"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Project%20Supervisor&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Project Supervisor"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=With+appreciation+for+project+guidance+and+support" alt="Project Supervisor subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=With+appreciation+for+project+guidance+and+support" alt="Section subtitle"/>
 <sub><b>PROJECT SUPERVISOR</b></sub>
 
 <br/><br/>
@@ -1085,7 +1079,7 @@ Thank you, Eng. Ahmed Hassan, for your guidance, feedback, and continued support
 <a id="acknowledgements"></a>
 <div align="center">
 <img src="https://capsule-render.vercel.app/api?type=rect&section=header&text=Acknowledgements&fontSize=34&color=gradient&customColorList=12%2C20%2C24&height=70&fontColor=ffffff&animation=scaleIn&fontAlignY=52" width="100%" alt="Acknowledgements"/>
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=With+gratitude+to+everyone+who+supported+TelcoPulse" alt="Acknowledgements subtitle"/>
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=900&color=00D4FF&center=true&vCenter=true&width=860&height=28&lines=With+gratitude+to+everyone+who+supported+TelcoPulse" alt="Section subtitle"/>
 <sub><b>SPECIAL THANKS</b></sub>
 
 <br/><br/>
